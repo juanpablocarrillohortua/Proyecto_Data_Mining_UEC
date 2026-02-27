@@ -1,0 +1,8 @@
+pandas
+numpy
+plotly-express
+matplotlib
+seaborn
+scikit-learn
+kaggle
+nbstripout

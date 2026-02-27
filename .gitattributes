@@ -1,0 +1,7 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+
+# 2. Configuración específica para Jupyter Notebooks
+#    - filter=nbstripout: Limpia los outputs y metadatos antes de hacer commit
+#    - diff=ipynb: Muestra diffs legibles del código y markdown
