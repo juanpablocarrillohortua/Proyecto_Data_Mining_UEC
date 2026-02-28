@@ -1,0 +1,6 @@
+track_name,track_artist,track_popularity,track_album_name,track_album_release_date,playlist_name,playlist_genre,playlist_subgenre,danceability,energy,key,loudness,mode,speechiness,acousticness,instrumentalness,liveness,valence,tempo,duration_ms
+,,0,,2012-01-05,HIP&HOP,rap,southern hip hop,0.714,0.821,6,-7.635,1,0.176,0.041,0.0,0.116,0.649,95.999,282707
+,,0,,2017-12-01,GANGSTA Rap,rap,gangster rap,0.678,0.659,11,-5.364,0,0.319,0.0534,0.0,0.553,0.191,146.153,202235
+,,0,,2017-12-01,GANGSTA Rap,rap,gangster rap,0.465,0.82,10,-5.907,0,0.307,0.0963,0.0,0.0888,0.505,86.839,206465
+,,0,,2012-01-05,Reggaeton viejito🔥,latin,reggaeton,0.675,0.919,11,-6.075,0,0.0366,0.0606,0.00653,0.103,0.726,97.017,252773
+,,0,,2012-01-05,latin hip hop,latin,latin hip hop,0.714,0.821,6,-7.635,1,0.176,0.041,0.0,0.116,0.649,95.999,282707
