@@ -11,16 +11,21 @@ Este proyecto es una demostración de las fases propias de CRISP-DM, con especia
 ---
 ## Contexto
 
+El gerente de una disquera desea conocer mejor el mercado musical contemporaneo para seleccionar de mejor manera a que clase de artistas fimar segun lo popular que es su estilo musical.
 
 ## Objetivo del Negocio
 
-
+Incrementar la popularidad de los artistas firmados por la disquera.
 
 ## Objetivo del Proyecto de Datoss
 
+Identificar que clase de caracteristicas musicales y de percepcion de los usuarios generan una mayor popularidad en las canciones (ritmo, energia, genero, etc)
 
 
 ## KPIs (Indicadores Clave)
+
+* Incrementar el índice de popularidad promedio (0-100) de los nuevos artistas firmados en un 30% en un plazo de 8 meses basado en las recomendaciones.
+* Incrementar el ingreso medio por streaming provenientes de los artistas en un 20% en los proximos 12 meses.
 
 ---
 ## Autores
