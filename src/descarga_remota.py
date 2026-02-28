@@ -15,7 +15,7 @@ DOWNLOAD_PATH = str(DOWNLOAD_DIR)
 
 #####url para descargar el repositorio
 
-KAGGLE_ID = 'ziya07/drugpatient-dataset-for-ckd-prediction'
+KAGGLE_ID = 'joebeachcapital/30000-spotify-songs'
 
 ######
 
