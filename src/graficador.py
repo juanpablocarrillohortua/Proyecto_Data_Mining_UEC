@@ -150,6 +150,8 @@ class Graficador:
         axes[2].set_title('QQ-Plot (Ajuste a Normal)')
 
         # Ajuste final de diseño
+        self.figura_actual.suptitle(f'Análisis de la Variable: {var}', 
+                             fontsize=16, fontweight='bold', y=1.02)
         plt.tight_layout()
         sns.despine()
         plt.show()
