@@ -1,6 +1,9 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
+from pathlib import Path
+
 
 class Graficador:
 
@@ -15,12 +18,16 @@ class Graficador:
                          etiqueta_y: str = False, 
                          count_label: bool = True,
                          paleta: str = "pastel",
-                         order: bool = True) -> None:
+                         order: bool = True,
+                         rotacion: int = False) -> None:
+        
+        """Generar un Barplot para variables discretas"""
         
         #establecer tema
 
         sns.set_theme(style="whitegrid", rc={"axes.facecolor": "#F8F9FA", "figure.facecolor": "#F8F9FA"})
-        plt.rcParams['figure.figsize'] = (10, 5)
+
+        self.figura_actual, ax = plt.subplots(figsize=(10, 5))
 
 
         # Crear el gráfico de frecuencias (Countplot)
@@ -57,6 +64,12 @@ class Graficador:
         else:  
             ax.set_ylabel("Cantidad", fontsize=12, labelpad=15, color='#34495E')
 
+        #rotacion del eje x
+        if rotacion:
+            ax.tick_params(axis='x', rotation=rotacion) 
+
+            plt.setp(ax.get_xticklabels(), ha="center", va="top")
+
         # Añadir etiquetas de datos sobre las barras (Data Labels) solo si es True
         if count_label:
             for p in ax.patches:
@@ -69,3 +82,33 @@ class Graficador:
 
         plt.tight_layout()
         plt.show()
+
+    def guardar_grafico(self, nombre_archivo: str, dpi: int = 300, sobrescribir: bool = False):
+            
+            """
+            Guarda la figura actual. 
+            Verifica si el archivo ya existe antes de proceder.
+            """
+
+            if self.figura_actual is None:
+                print("Error: No hay ningún gráfico generado para guardar.")
+                return
+
+            # Asegurar que tenga extensión
+            if not nombre_archivo.endswith(('.png', '.jpg', '.pdf', '.svg')):
+                nombre_archivo += '.png'
+
+            # Crear carpeta si no existe
+            if not os.path.exists(self.ruta_guardado):
+                os.makedirs(self.ruta_guardado)
+                print(f"Carpeta creada: {self.ruta_guardado}")
+
+            ruta_completa = self.ruta_guardado / nombre_archivo
+
+            # Revisar si ya existe
+            if os.path.exists(ruta_completa) and not sobrescribir:
+                print(f"El archivo '{nombre_archivo}' ya existe en '{self.ruta_guardado}'.")
+                print("Usa 'sobrescribir=True' si deseas reemplazarlo.")
+            else:
+                self.figura_actual.savefig(ruta_completa, dpi=dpi, bbox_inches='tight')
+                print(f"Gráfico guardado exitosamente en: {ruta_completa}")
