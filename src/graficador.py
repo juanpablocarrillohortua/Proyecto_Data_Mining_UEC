@@ -3,6 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 from pathlib import Path
+import scipy.stats as stats
 
 
 class Graficador:
@@ -112,3 +113,43 @@ class Graficador:
             else:
                 self.figura_actual.savefig(ruta_completa, dpi=dpi, bbox_inches='tight')
                 print(f"Gráfico guardado exitosamente en: {ruta_completa}")
+
+    def graficos_continuos(self, 
+                           df: pd.DataFrame, 
+                           var: str) -> None:
+        """Genera un resumen grafico completo para las variables continuas"""
+        # 1. Preparación de datos y estadísticos
+        data = df[var]
+        media = data.mean()
+        mediana = data.median()
+        moda = data.mode()[0]
+
+        # 2. Configurar la cuadrícula (1 fila, 3 columnas)
+        self.figura_actual, axes = plt.subplots(1, 3, figsize=(18, 5))
+        sns.set_theme(style="darkgrid")
+
+        # --- GRÁFICO 1: HISTOGRAMA ---
+        sns.histplot(data, kde=True, color="#4C72B0", element="step", alpha=0.4, ax=axes[0], bins="fd")
+        axes[0].axvline(media, color='red', linestyle='--', label=f'Media: {media:.2f}')
+        axes[0].axvline(mediana, color='green', linestyle='-', label=f'Mediana: {mediana:.2f}')
+        axes[0].axvline(moda, color='orange', linestyle=':', label=f'Moda: {moda:.2f}')
+        axes[0].set_title('Histograma y Tendencia Central')
+        axes[0].legend()
+
+        # --- GRÁFICO 2: BOXPLOT ---
+        sns.boxplot(y=data, ax=axes[1], color="#9b59b6", width=0.3)
+        axes[1].set_title('Boxplot (Detección de Outliers)')
+        # punto para la media en el boxplot
+        axes[1].plot(0, media, marker='D', color='red', label='Media') 
+
+        # --- GRÁFICO 3: QQ-PLOT ---
+        # stats.probplot dibuja el gráfico sobre el eje que le pasemos
+        stats.probplot(data, dist="norm", plot=axes[2])
+        axes[2].get_lines()[0].set_markerfacecolor('#4C72B0') # Color de los puntos
+        axes[2].get_lines()[1].set_color('red')               # Color de la línea de ajuste
+        axes[2].set_title('QQ-Plot (Ajuste a Normal)')
+
+        # Ajuste final de diseño
+        plt.tight_layout()
+        sns.despine()
+        plt.show()

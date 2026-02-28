@@ -1,0 +1,2 @@
+variable,media,mediana,std,asimetria,sesgo,curtosis,forma curtosis,intervalo central,iqr,largo,normalidad,p_valor
+energy,0.6986192707032559,0.721,0.18091003391959107,-0.6363298409581123,Sesgo negativo (izquierda),0.000528151996844084,mesocurtica,"[0.581, 0.84]",0.259,32833,False,1.356002094470754e-87

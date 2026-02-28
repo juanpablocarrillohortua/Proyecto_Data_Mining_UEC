@@ -1,0 +1,2 @@
+variable,media,mediana,std,asimetria,sesgo,curtosis,forma curtosis,intervalo central,iqr,largo,normalidad,p_valor
+danceability,0.6548495202996985,0.672,0.14508532044765135,-0.504488435020354,Sesgo negativo (izquierda),0.010202119107933783,mesocurtica,"[0.563, 0.761]",0.19800000000000006,32833,False,1.0428077949357288e-64

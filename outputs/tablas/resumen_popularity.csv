@@ -1,0 +1,2 @@
+variable,media,mediana,std,asimetria,sesgo,curtosis,forma curtosis,intervalo central,iqr,largo,normalidad,p_valor
+track_popularity,42.477080985593766,45.0,24.984074486186937,-0.2333200734354193,Simétrica,-0.9327703859519016,platicurtica,"[24.0, 62.0]",38.0,32833,False,3.9313617898899374e-140
