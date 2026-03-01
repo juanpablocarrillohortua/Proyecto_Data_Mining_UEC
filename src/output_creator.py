@@ -9,7 +9,7 @@ class OutputCreator:
         self.ruta_graficos = ruta_graficos
         
 
-    def guardar_csv(self, df, nombre_archivo) -> None:
+    def guardar_csv(self, df, nombre_archivo, indexx=False) -> None:
         """
         Guarda un DataFrame como CSV solo si el archivo no existe en la ruta.
         DEBE AGREGAR .csv AL FINAL DEL NOMBRE
@@ -22,7 +22,7 @@ class OutputCreator:
         else:
             # Si no existe, se guarda
             try:
-                df.to_csv(ruta_archivo, index=False)
+                df.to_csv(ruta_archivo, index=indexx)
                 print(f"Archivo guardado exitosamente en: {ruta_archivo}")
             except Exception as e:
                 print(f"Error al guardar el archivo: {e}")

@@ -155,3 +155,35 @@ class Graficador:
         plt.tight_layout()
         sns.despine()
         plt.show()
+
+    def scatter_plot(self, 
+                     data: pd.DataFrame, 
+                     x:str, 
+                     y:str,
+                     x_title: str = None,
+                     y_title: str = None,
+                     main_title: str = None) -> None:
+
+        """Generar un grafico de puntos para observar la relacion entre 2 variables"""
+
+        sns.set_theme(style="darkgrid", palette="muted")
+
+        # Crear el gráfico
+        self.figura_actual, ax = plt.subplots(figsize=(10, 6))
+        sns.regplot(
+            data=data, 
+            x=data[x], 
+            y=data[y],
+            scatter_kws={'alpha':0.5, 's':60}, # Transparencia y tamaño de puntos
+            line_kws={'color':'red', 'lw':2}   # Estilo de la línea de ajuste
+        )
+
+        # Personalizar etiquetas y título
+        ax.set_title(main_title or f'Relación entre {x} y {y}', fontsize=16, fontweight='bold', y=1.02)
+        ax.set_xlabel(x_title or x, fontsize=12)
+        ax.set_ylabel(y_title or y, fontsize=12)
+
+        # Quitar los bordes superior y derecho para un look más limpio
+        sns.despine()
+
+        plt.show()
