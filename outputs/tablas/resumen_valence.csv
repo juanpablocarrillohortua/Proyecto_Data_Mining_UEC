@@ -1,0 +1,2 @@
+variable,media,mediana,std,asimetria,sesgo,curtosis,forma curtosis,intervalo central,iqr,no atipicos (iqr),largo,normalidad,p_valor
+valence,0.5105609737154692,0.512,0.2331459743695146,-0.0054853502322221945,Simétrica,-0.9009807644915608,platicurtica,"[0.331, 0.693]",0.36199999999999993,"[-0.21, 1.24]",32833,False,4.8023287341670366e-35

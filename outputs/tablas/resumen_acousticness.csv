@@ -1,0 +1,2 @@
+variable,media,mediana,std,asimetria,sesgo,curtosis,forma curtosis,intervalo central,iqr,no atipicos (iqr),largo,normalidad,p_valor
+acousticness,0.17533371507934092,0.0804,0.21963254030407936,1.5947859047363795,Sesgo positivo (derecha),1.878408921828512,leptocurtica,"[0.0151, 0.255]",0.2399,"[-0.34, 0.61]",32833,False,0.0
