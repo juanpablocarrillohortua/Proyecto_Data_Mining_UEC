@@ -11,6 +11,31 @@ class Graficador:
     def __init__(self, ruta_guardado):
         self.ruta_guardado = ruta_guardado
 
+    @staticmethod
+    def calcular_porcentaje_atipicos(data:pd.DataFrame ,var: str, screen=True):
+    
+        q1 = data[var].quantile(0.25)
+        q3 = data[var].quantile(0.75)
+        iqr = q3 - q1
+
+        
+        limite_inferior = q1 - 1.5 * iqr
+        limite_superior = q3 + 1.5 * iqr
+
+        
+        outliers_mask = (data[var] < limite_inferior) | (data[var] > limite_superior)
+
+        
+        porcentaje_outliers = outliers_mask.mean() * 100 # .mean() sobre booleanos da la proporción (0 a 1)
+
+        if screen:
+            print(f"--- Análisis de: {var} ---")
+            print(f"Límite Inferior: {limite_inferior:.4f}")
+            print(f"Límite Superior: {limite_superior:.4f}")
+            print(f"Porcentaje de atípicos: {porcentaje_outliers:.2f}%")
+            print("-" * 30)
+        return porcentaje_outliers
+
     def barplot_discreto(self, 
                          data_frame:pd.DataFrame, 
                          var: str, 
@@ -186,4 +211,61 @@ class Graficador:
         # Quitar los bordes superior y derecho para un look más limpio
         sns.despine()
 
+        plt.show()
+    
+    def box_plot_para_atipicos(self, data: pd.DataFrame , var: str) -> None:
+
+        porcentaje = Graficador.calcular_porcentaje_atipicos(data, var, screen=False)
+    
+        sns.set_theme(style="darkgrid", context="notebook")
+
+        # 2. Crear la figura y el eje usando subplots
+        # Esto reemplaza a plt.figure() y permite gestionar mejor el layout
+        self.figura_actual, ax = plt.subplots(figsize=(10, 6), dpi=100)
+
+        # 3. Crear el Boxplot vinculándolo al eje 'ax'
+        sns.boxplot(
+            data=data,
+            y=var,
+            color='#3376BD',
+            width=0.4,           
+            linewidth=1.5,
+            fliersize=5,         
+            showmeans=True,
+            meanprops={
+                "marker":"o", 
+                "markerfacecolor":"white", 
+                "markeredgecolor":"black", 
+                "markersize":"7"
+            },
+            ax=ax                
+        )
+
+        texto_info = f'Porcentaje de Outliers: {porcentaje:.2f}%'
+        
+        ax.text(
+            0.95, 0.95,                  # Posición (X, Y) relativa al eje
+            texto_info, 
+            transform=ax.transAxes,      # Indica que use coordenadas 0-1 del recuadro
+            fontsize=12,
+            verticalalignment='top', 
+            horizontalalignment='right',
+            fontweight='bold',
+            bbox=dict(                   # Propiedades del recuadro
+                boxstyle='round,pad=0.5', 
+                facecolor='white', 
+                edgecolor="#FFFFFF", 
+                alpha=0.8
+            )
+        )
+
+        # 4. Personalización sobre el objeto 'ax'
+        ax.set_title(f'Detección de outliers para {var}', fontsize=18, pad=20, fontweight='bold')
+
+        ax.yaxis.grid(True, linestyle='--', alpha=0.3)
+        ax.xaxis.grid(False)
+
+        sns.despine(ax=ax, left=True, bottom=True)
+
+        plt.tight_layout()
         plt.show()
