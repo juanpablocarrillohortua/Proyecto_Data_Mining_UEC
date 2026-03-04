@@ -8,11 +8,18 @@ import scipy.stats as stats
 
 class Graficador:
 
+    """Esta clase es un compendio de graficas para su uso a alto nivel y facilitar el codigo en el notebook"""
+
     def __init__(self, ruta_guardado):
+
+        """cree la instancia con la ruta donde desee guardar los graficos"""
+
         self.ruta_guardado = ruta_guardado
 
     @staticmethod
     def calcular_porcentaje_atipicos(data:pd.DataFrame ,var: str, screen=True):
+
+        """Metodo auxiliar para el claculo de valores atipicos"""
     
         q1 = data[var].quantile(0.25)
         q3 = data[var].quantile(0.75)
@@ -214,6 +221,8 @@ class Graficador:
         plt.show()
     
     def box_plot_para_atipicos(self, data: pd.DataFrame , var: str) -> None:
+
+        """Genere un boxplot con un recuadro de texto que indica el procentaje de valores atipicos en la variable"""
 
         porcentaje = Graficador.calcular_porcentaje_atipicos(data, var, screen=False)
     
