@@ -28,11 +28,9 @@ Identificar que clase de caracteristicas musicales y de percepcion de los usuari
 * Incrementar el ingreso medio por streaming provenientes de los artistas en un 20% en los proximos 12 meses.
 
 ---
-## Autores
+## Autor
 
 - **Juan Pablo Carrillo Hortua**
-- **Alejandro Jose Medina**
-- **Juan Esteban Trujillo**
 
 ---
 
